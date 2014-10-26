@@ -1,2 +1,6 @@
 ---
 my_puppet::config::install_dir: "/opt/my-puppet"
+
+homebrew::config::install_dir: "%{hiera('my_puppet::config::install_dir')}/homebrew"
+homebrew::config::cache_dir:   "%{hiera('my_puppet::config::install_dir')}/cache/homebrew"
+homebrew::config::log_dir:     "%{hiera('my_puppet::config::install_dir')}/log/homebrew"
