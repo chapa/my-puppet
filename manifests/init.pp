@@ -22,6 +22,6 @@ File {
 
 node default {
 
-	include homebrew
+	include packages
 
 }
