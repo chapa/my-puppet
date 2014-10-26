@@ -1,6 +1,17 @@
 ---
 my_puppet::config::install_dir: "/opt/my-puppet"
+my_puppet::config::cache_dir:   "%{hiera('my_puppet::config::install_dir')}/cache"
+my_puppet::config::config_dir:  "%{hiera('my_puppet::config::install_dir')}/config"
+my_puppet::config::data_dir:    "%{hiera('my_puppet::config::install_dir')}/data"
+my_puppet::config::log_dir:     "%{hiera('my_puppet::config::install_dir')}/log"
 
 homebrew::config::install_dir: "%{hiera('my_puppet::config::install_dir')}/homebrew"
-homebrew::config::cache_dir:   "%{hiera('my_puppet::config::install_dir')}/cache/homebrew"
-homebrew::config::log_dir:     "%{hiera('my_puppet::config::install_dir')}/log/homebrew"
+homebrew::config::cache_dir:   "%{hiera('my_puppet::config::cache_dir')}/homebrew"
+homebrew::config::log_dir:     "%{hiera('my_puppet::config::log_dir')}/homebrew"
+
+packages::homebrew::dnsmasq::config_dir:  "%{hiera('my_puppet::config::config_dir')}/dnsmasq"
+packages::homebrew::dnsmasq::config_file: "%{hiera('my_puppet::config::config_dir')}/dnsmasq/dnsmasq.conf"
+packages::homebrew::dnsmasq::data_dir:    "%{hiera('my_puppet::config::datadir')}/dnsmasq"
+packages::homebrew::dnsmasq::executable:  "%{hiera('homebrew::config::install_dir')}/sbin/dnsmasq"
+packages::homebrew::dnsmasq::log_dir:     "%{hiera('my_puppet::config::log_dir')}/dnsmasq"
+packages::homebrew::dnsmasq::log_file:    "%{hiera('my_puppet::config::log_dir')}/dnsmasq/console.log"

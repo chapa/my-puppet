@@ -1,6 +1,8 @@
 .DS_Store
 /.need_to_source_env_sh
 /cache/
+/config/
+/data/
 /env.d/
 /homebrew/
 /log/

@@ -20,7 +20,7 @@ if [ ! -f manifests/init.pp ]; then
 fi
 
 # Run puppet
-sudo puppet apply --modulepath=./modules --hiera_config=./config/hiera.yaml manifests/init.pp
+sudo puppet apply --modulepath=./modules --hiera_config=./hiera/config.yaml manifests/init.pp
 
 if [ -f $ROOT_PATH/.need_to_source_env_sh ]; then
 	echo "You need to source the $ROOT_PATH/env.sh file"
