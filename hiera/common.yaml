@@ -1,0 +1,2 @@
+---
+my_puppet::config::install_dir: "/opt/my-puppet"
