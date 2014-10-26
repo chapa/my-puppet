@@ -23,5 +23,7 @@ fi
 sudo puppet apply --modulepath=./modules --hiera_config=./hiera/config.yaml manifests/init.pp
 
 if [ -f $ROOT_PATH/.need_to_source_env_sh ]; then
+	echo -e "\033[1;34m"
 	echo "You need to source the $ROOT_PATH/env.sh file"
+	echo -e "\033[0m"
 fi

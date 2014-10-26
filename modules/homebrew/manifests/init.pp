@@ -17,12 +17,8 @@ class homebrew() inherits homebrew::config {
 		require => Exec['clone homebrew repository'],
 	}
 
-	file { "${my_puppet::config::install_dir}/env.d/homebrew.sh":
-		ensure  => 'present',
-		mode    => '0644',
+	my_puppet::env_script{ 'homebrew':
 		content => template('homebrew/env.sh.erb'),
-		require => File['env.d folder'],
-		notify  => Exec['need to source env.sh'],
 	}
 
 }

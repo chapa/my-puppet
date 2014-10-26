@@ -1,7 +1,12 @@
 class my_puppet() inherits my_puppet::config {
 
-	file { 'env.d folder':
-		path => "${install_dir}/env.d",
+	file { [
+		"${install_dir}/cache",
+		"${install_dir}/config",
+		"${install_dir}/data",
+		"${install_dir}/env.d",
+		"${install_dir}/log",
+	]:
 		ensure => directory,
 	}
 
