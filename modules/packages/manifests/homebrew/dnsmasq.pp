@@ -45,7 +45,8 @@ class packages::homebrew::dnsmasq(
 	}
 
 	service { 'dev.dnsmasq':
-		ensure => running,
+		ensure  => running,
+		require => Homebrew::Package['dnsmasq'],
 	}
 
 }
