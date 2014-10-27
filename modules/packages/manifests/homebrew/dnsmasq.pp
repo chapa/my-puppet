@@ -11,13 +11,15 @@ class packages::homebrew::dnsmasq(
 
 	homebrew::package{ 'dnsmasq':
 		ensure => 'present',
+		notify => Service['dev.dnsmasq'],
 	}
 
 	file { [$config_dir, $log_dir, $data_dir]:
 		ensure => directory,
+		notify => Service['dev.dnsmasq'],
 	}
 
-	file { "${config_dir}/dnsmasq.conf":
+	file { "${config_file}":
 		content => template('packages/homebrew/dnsmasq/dnsmasq.conf.erb'),
 		require => File[$config_dir],
 		notify  => Service['dev.dnsmasq'],
