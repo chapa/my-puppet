@@ -15,3 +15,12 @@ packages::homebrew::dnsmasq::data_dir:    "%{hiera('my_puppet::config::data_dir'
 packages::homebrew::dnsmasq::executable:  "%{hiera('homebrew::config::install_dir')}/sbin/dnsmasq"
 packages::homebrew::dnsmasq::log_dir:     "%{hiera('my_puppet::config::log_dir')}/dnsmasq"
 packages::homebrew::dnsmasq::log_file:    "%{hiera('packages::homebrew::dnsmasq::log_dir')}/console.log"
+
+packages::homebrew::nginx::config_dir:  "%{hiera('my_puppet::config::config_dir')}/nginx"
+packages::homebrew::nginx::config_file: "%{hiera('packages::homebrew::nginx::config_dir')}/nginx.conf"
+packages::homebrew::nginx::data_dir:    "%{hiera('my_puppet::config::data_dir')}/nginx"
+packages::homebrew::nginx::executable:  "%{hiera('homebrew::config::install_dir')}/bin/nginx"
+packages::homebrew::nginx::log_dir:     "%{hiera('my_puppet::config::log_dir')}/nginx"
+packages::homebrew::nginx::log_file:    "%{hiera('packages::homebrew::nginx::log_dir')}/console.log"
+packages::homebrew::nginx::pid_file:    "%{hiera('packages::homebrew::nginx::data_dir')}/nginx.pid"
+packages::homebrew::nginx::sites_dir:   "%{hiera('my_puppet::config::config_dir')}/sites"

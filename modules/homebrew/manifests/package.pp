@@ -5,6 +5,7 @@ define homebrew::package(
 	require homebrew
 
 	$environment = [
+		"HOME=/Users/chapa",
 		"HOMEBREW_ROOT=${homebrew::config::install_dir}",
 		"HOMEBREW_CACHE=${homebrew::config::cache_dir}",
 		"HOMEBREW_LOGS=${homebrew::config::log_dir}",
