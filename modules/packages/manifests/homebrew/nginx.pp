@@ -40,7 +40,7 @@ class packages::homebrew::nginx(
 		source  => 'puppet:///modules/packages/homebrew/nginx/config/public'
 	}
 
-	file { '/Library/LaunchAgents/dev.nginx.plist':
+	file { '/Library/LaunchDaemons/dev.nginx.plist':
 		content => template('packages/homebrew/nginx/dev.nginx.plist.erb'),
 		owner   => 'root',
 		group   => 'wheel',
