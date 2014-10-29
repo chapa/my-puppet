@@ -19,6 +19,11 @@ if [ ! -f manifests/init.pp ]; then
 	exit
 fi
 
+# Check that ssh key files exist
+if [ ! -f /Users/chapa/.ssh/id_rsa ]; then
+	read -p "Don't forget to generate your ssh keys and set the public one on github, then press [Enter] "
+fi
+
 # Run puppet
 sudo puppet apply --modulepath=./modules --hiera_config=./hiera/config.yaml manifests/init.pp
 

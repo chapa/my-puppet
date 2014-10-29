@@ -27,6 +27,7 @@ Service {
 
 node default {
 
+	include dotfiles
 	include packages
 
 }
