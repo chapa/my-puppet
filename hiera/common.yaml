@@ -23,4 +23,4 @@ packages::homebrew::nginx::executable:  "%{hiera('homebrew::config::install_dir'
 packages::homebrew::nginx::log_dir:     "%{hiera('my_puppet::config::log_dir')}/nginx"
 packages::homebrew::nginx::log_file:    "%{hiera('packages::homebrew::nginx::log_dir')}/console.log"
 packages::homebrew::nginx::pid_file:    "%{hiera('packages::homebrew::nginx::data_dir')}/nginx.pid"
-packages::homebrew::nginx::sites_dir:   "%{hiera('my_puppet::config::config_dir')}/sites"
+packages::homebrew::nginx::sites_dir:   "%{hiera('packages::homebrew::nginx::config_dir')}/sites"

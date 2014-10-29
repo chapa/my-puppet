@@ -47,13 +47,6 @@ class packages::homebrew::nginx(
 		notify  => Service['dev.nginx'],
 	}
 
-	#file { "${homebrew::config::install_dir}/etc/nginx":
-	#	ensure  => absent,
-	#	force   => true,
-	#	recurse => true,
-	#	require => Homebrew::Package['nginx'],
-	#}
-
 	service { 'dev.nginx':
 		ensure  => running,
 		require => Homebrew::Package['nginx'],
