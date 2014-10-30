@@ -33,6 +33,12 @@ class packages::homebrew::nginx(
 		notify  => Service['dev.nginx'],
 	}
 
+	file { "${config_dir}/fastcgi_params":
+		source => 'puppet:///modules/packages/homebrew/nginx/config/fastcgi_params',
+		require => File[$config_dir],
+		notify  => Service['dev.nginx'],
+	}
+
 	file { "${config_dir}/public":
 		ensure  => directory,
 		recurse => true,

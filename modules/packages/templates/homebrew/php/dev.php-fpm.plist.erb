@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>dev.php-fpm</string>
+
+    <key>MyPuppet</key>
+    <dict>
+      <key>Description</key>
+      <string>PHP for web server.</string>
+    </dict>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string><%= @fpm_executable %></string>
+      <string>--fpm-config</string>
+      <string><%= @fpm_config_file %></string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true />
+
+    <key>KeepAlive</key>
+    <dict>
+      <key>NetworkState</key>
+      <true/>
+    </dict>
+
+    <key>WorkingDirectory</key>
+    <string><%= @data_dir %></string>
+
+    <key>StandardErrorPath</key>
+    <string><%= @fpm_log_file %></string>
+
+    <key>StandardOutPath</key>
+    <string><%= @fpm_log_file %></string>
+  </dict>
+</plist>

@@ -41,8 +41,18 @@ http {
 		listen      80 default_server;
 		server_name localhost;
 
+		root  <%= @config_dir %>/public;
+		index index.php index.html index.htm;
+
 		location / {
-			root   <%= @config_dir %>/public;
+			try_files $uri $uri/ =404;
+		}
+		
+		location ~ \.php$ {
+			fastcgi_pass   127.0.0.1:9000;
+			fastcgi_index  index.php;
+			fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+			include        fastcgi_params;
 		}
 	}
 

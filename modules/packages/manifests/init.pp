@@ -6,6 +6,7 @@ class packages() {
 		"${name}::homebrew::dnsmasq",
 		"${name}::homebrew::git",
 		"${name}::homebrew::nginx",
+		"${name}::homebrew::php",
 		"${name}::homebrew::wget",
 	]
 	

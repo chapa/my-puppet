@@ -20,10 +20,7 @@ File {
 	mode    => '0644',
 }
 
-Service {
-	ensure => 'running',
-	enable => true,
-}
+
 
 node default {
 
