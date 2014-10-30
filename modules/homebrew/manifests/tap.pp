@@ -33,14 +33,14 @@ define homebrew::tap(
 			environment => $environment,
 			path        => $path,
 			command => "${brew_bin} tap ${name}",
-			unless  => "ls ${homebrew::config::install_dir}/Library/Taps",
+			unless  => "ls ${homebrew::config::install_dir}/Library/Taps/${user}/${user}-${repo}",
 		}
 	} else {
 		exec { "untap ${name} homebrew repository":
 			environment => $environment,
 			path        => $path,
 			command => "${brew_bin} remove ${option} ${name}",
-			onlyif  => "ls ${homebrew::config::install_dir}/Library/Taps",
+			onlyif  => "ls ${homebrew::config::install_dir}/Library/Taps/${user}/${user}-${repo}",
 		}
 	}
 
