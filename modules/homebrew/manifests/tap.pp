@@ -1,6 +1,5 @@
-define homebrew::package(
-	$ensure  = 'present',
-	$options = undef,
+define homebrew::tap(
+	$ensure = 'present',
 ) {
 
 	require homebrew
@@ -23,21 +22,25 @@ define homebrew::package(
 		'/sbin',
 	]
 
+	$splited_name = split($name, '/')
+	$user = $splited_name[0]
+	$repo = $splited_name[1]
+
 	$brew_bin = "${homebrew::config::install_dir}/bin/brew"
 
 	if $ensure == 'present' {
-		exec { "install ${name} homebrew package":
+		exec { "tap ${name} homebrew repository":
 			environment => $environment,
 			path        => $path,
-			command => "${brew_bin} install ${options} ${name}",
-			unless  => "${brew_bin} list | grep ${name}",
+			command => "${brew_bin} tap ${name}",
+			unless  => "ls ${homebrew::config::install_dir}/Library/Taps",
 		}
 	} else {
-		exec { "uninstall ${name} homebrew package":
+		exec { "untap ${name} homebrew repository":
 			environment => $environment,
 			path        => $path,
-			command => "${brew_bin} remove ${options} ${name}",
-			onlyif  => "${brew_bin} list | grep ${name}",
+			command => "${brew_bin} remove ${option} ${name}",
+			onlyif  => "ls ${homebrew::config::install_dir}/Library/Taps",
 		}
 	}
 
