@@ -35,3 +35,8 @@ packages::homebrew::php::log_dir:         "%{hiera('my_puppet::config::log_dir')
 packages::homebrew::php::log_file:        "%{hiera('packages::homebrew::php::log_dir')}/console.log"
 packages::homebrew::php::fpm_log_file:    "%{hiera('packages::homebrew::php::log_dir')}/fpm-console.log"
 packages::homebrew::php::fpm_pid_file:    "%{hiera('packages::homebrew::php::data_dir')}/php-fpm.pid"
+
+docker::config::boot2docker_executable: "%{hiera('homebrew::config::install_dir')}/bin/boot2docker"
+docker::config::data_dir:               "%{hiera('my_puppet::config::data_dir')}/docker"
+docker::config::log_dir:                "%{hiera('my_puppet::config::log_dir')}/docker"
+docker::config::boot2docker_log_file:   "%{hiera('docker::config::log_dir')}/boot2docker.log"

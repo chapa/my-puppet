@@ -30,5 +30,6 @@ node default {
 	include dotfiles
 	include packages
 	include applications
+	include docker
 
 }
