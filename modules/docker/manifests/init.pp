@@ -20,6 +20,7 @@ class docker(
 		environment => [
 			"HOME=/Users/chapa",
 		],
+		require => Homebrew::Package['boot2docker'],
 	}
 
 	exec { "${boot2docker_executable} start":
