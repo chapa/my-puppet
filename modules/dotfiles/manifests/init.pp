@@ -20,10 +20,14 @@ class dotfiles() {
 	}
 
 	exec { 'clone chapa/dotfiles repository':
-		command => "git clone git@github.com:chapa/dotfiles.git ${repo}",
-		cwd     => $repo_dir,
+		command => "git clone https://github.com/chapa/dotfiles.git ${repo}",
 		unless  => "ls ${repo}",
 		require => File[$repo_dir],
+	}
+
+	exec { "cat ${repo}/.git/config | sed -E 's/url = https?:\\/\\/([a-zA-Z.]+)\\//url = git@\\1:/' > ${repo}/.git/config":
+		unless => "cat ${repo}/.git/config | grep 'url = git@'",
+		require => Exec['clone chapa/dotfiles repository'],
 	}
 
 	dotfile { [
