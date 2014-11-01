@@ -16,7 +16,7 @@ class my_puppet() inherits my_puppet::config {
 	}
 
 	exec { "cat ${my_puppet::config::install_dir}/.git/config | sed -E 's/url = https?:\\/\\/([a-zA-Z.]+)\\//url = git@\\1:/' > ${my_puppet::config::install_dir}/.git/config":
-		unless => "cat ${my_puppet::config::install_dir}/.git/config | grep 'url = git@'",
+		onlyif => "cat ${my_puppet::config::install_dir}/.git/config | grep 'url = http'",
 	}
 	
 }

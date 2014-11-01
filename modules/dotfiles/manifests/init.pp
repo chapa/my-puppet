@@ -26,7 +26,7 @@ class dotfiles() {
 	}
 
 	exec { "cat ${repo}/.git/config | sed -E 's/url = https?:\\/\\/([a-zA-Z.]+)\\//url = git@\\1:/' > ${repo}/.git/config":
-		unless => "cat ${repo}/.git/config | grep 'url = git@'",
+		onlyif  => "cat ${repo}/.git/config | grep 'url = http'",
 		require => Exec['clone chapa/dotfiles repository'],
 	}
 
